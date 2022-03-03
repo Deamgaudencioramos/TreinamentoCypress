@@ -5,7 +5,7 @@ beforeEach(() => {
 
 });
 
-it.only('Deve criar um usuario', () => {
+it('Deve criar um usuario', () => {
     criarUsuario();
 });
 
