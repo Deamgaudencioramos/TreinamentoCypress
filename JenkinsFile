@@ -1,10 +1,10 @@
 pipeline{
     agent any
     
-    tools { nodejs "nodejs" }
+    tools {nodejs "NodeJS"}
     
     parameters{
-        string (name: 'SPEC', defaultValue:"cypress/integration/**/**",description: "Escolha qual suite de teste executar")
+        string (name: 'SPEC', defaultValue:"cypress/integration/formularioTest.spec.js",description: "Escolha qual suite de teste executar")
         choice (name: "BROWSER",choices: ['chrome','firefox','edge'],description: "escolha qual browser deseja executar o teste")
     }
     
@@ -15,9 +15,14 @@ pipeline{
 
     stages{
         
+        stage("Build"){
+            steps{
+                sh 'npm install'
+            }
+        }
+        
         stage("Testing"){
             steps{
-                sh "npm i"
                 sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
             }
         }
