@@ -1,5 +1,29 @@
 {
-    "chromeWebSecurity": true,
-    "baseUrl":"https://automacaocombatista.herokuapp.com/treinamento/home",
-    "testFiles":"**/*spec.js"
+
+  "baseUrl":"https://automacaocombatista.herokuapp.com/treinamento/home",
+  "env": {
+    "commandDelay": 0
+  },
+  "chromeWebSecurity": true,
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "video":false,
+   "chromeWebSecurity": true,
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+    "reporterEnabled": "cypress-mochawesome-reporter, mocha-junit-reporter",
+    "cypressMochawesomeReporterReporterOptions": {
+      "reportDir": "cypress/reports/relatório",
+      "charts": true,
+      "reportPageTitle": "PagSeguro - FAQ",
+      "screenshotOnRunFailure": true,
+      "embeddedScreenshots": true,
+      "inlineAssets": true
+    },
+    "mochaJunitReporterReporterOptions": {
+      "mochaFile": "cypress/reports/junit/results-[hash].xml"
+    }
+  }
 }
+
+
