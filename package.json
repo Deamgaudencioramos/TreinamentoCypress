@@ -13,6 +13,12 @@
     "cypress": "^9.4.1"
   },
   "devDependencies": {
-    "cypress-iframe": "^1.0.1"
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^2.3.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "cypress-slow-down": "^1.2.1",
+    "junit-report-merger": "^3.0.2",
+    "mocha": "^9.1.2",
+    "mocha-junit-reporter": "^2.0.0"
   }
 }
