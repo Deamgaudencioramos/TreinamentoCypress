@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    
+    parameters{
+        string (name: 'SPEC', defaultValue:"cypress/integration/**/**",description: "Escolha qual suite de teste executar")
+        choice(name: "BROWSER",choice:['chrome','firefox','edge'],description: "escolha qual browser deseja executar o teste")
+    }
+
+    options{
+        ansiColor('xterm')
+    }
+
+    stages{
+        
+        stage("Testing"){
+            steps{
+                sh "npm i"
+                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+
+    }
+}
