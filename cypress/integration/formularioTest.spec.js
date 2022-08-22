@@ -6,13 +6,5 @@ beforeEach(() => {
 });
 
 it('Deve criar um usuario', () => {
-    criarUsuario();
+    cy.visit('/');
 });
-
-it('Deve listar os usuarios',()=>{
-    listarUsuarios();
-})
-
-it('Deve excluir um usuario da lista',()=>{
-    excluirUsuario();
-})
