@@ -1,11 +1,14 @@
 pipeline{
     agent any
     
+    tools { nodejs "nodejs" }
+    
     parameters{
         string (name: 'SPEC', defaultValue:"cypress/integration/**/**",description: "Escolha qual suite de teste executar")
         choice (name: "BROWSER",choices: ['chrome','firefox','edge'],description: "escolha qual browser deseja executar o teste")
     }
-
+    
+    
     options{
         ansiColor('xterm')
     }
