@@ -13,9 +13,9 @@
   "reporterOptions": {
     "reporterEnabled": "cypress-mochawesome-reporter, mocha-junit-reporter",
     "cypressMochawesomeReporterReporterOptions": {
-      "reportDir": "cypress/reports/relatório",
+      "reportDir": "cypress/reports",
       "charts": true,
-      "reportPageTitle": "PagSeguro - FAQ",
+      "reportPageTitle": "relatorio-teste",
       "screenshotOnRunFailure": true,
       "embeddedScreenshots": true,
       "inlineAssets": true
