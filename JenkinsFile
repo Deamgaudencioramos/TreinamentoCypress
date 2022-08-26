@@ -29,9 +29,10 @@ pipeline{
     
     stage('Relatorio'){
     post{
-        always{
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'Report', reportTitles: 'PagSeguro - FAQ - e2e'])
+    steps{
+        always{publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'Report', reportTitles: 'PagSeguro - FAQ - e2e'])
             }
+          }
         }   
       }
    }
