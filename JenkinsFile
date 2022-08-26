@@ -23,7 +23,7 @@ pipeline{
         
         stage("Testing"){
             steps{
-                sh "npx cypress run --browser ${BROWSER} --env ambiente${AMBIENTE}"
+                sh "npx cypress run --browser ${BROWSER}"
             }
         }
     }
