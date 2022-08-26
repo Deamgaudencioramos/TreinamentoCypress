@@ -1,40 +1,42 @@
+
 pipeline{
     agent any
-    
     tools {nodejs "NodeJS"}
+ 
     
     parameters{
-        string (name: 'SPEC', defaultValue:"cypress/integration/formularioTest.spec.js",description: "Escolha qual suite de teste executar")
         choice (name: "BROWSER",choices: ['chrome','firefox','edge'],description: "escolha qual browser deseja executar o teste")
     }
-    
-    
+
     options{
         ansiColor('xterm')
     }
 
     stages{
-        
+        try {
+       
+        stage("Clone") {
+            checkout scm
+        }
+
         stage("Build"){
             steps{
                 sh 'npm install'
             }
         }
+
         
         stage("Testing"){
             steps{
-                sh "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+                sh "npx cypress run --browser ${BROWSER}"
             }
-        }  
+        }
+
+        
     }
-    
     post{
-       
-        
         always{
-            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-        
-        
+            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'Report', reportTitles: 'PagSeguro - FAQ - e2e'])
         }
     }
 }
