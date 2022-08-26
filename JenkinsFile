@@ -2,7 +2,7 @@
 pipeline{
     agent any
     tools {nodejs "NodeJS"}
- 
+    
     
     parameters{
         choice (name: "BROWSER",choices: ['chrome','firefox','edge'],description: "escolha qual browser deseja executar o teste")
@@ -13,8 +13,7 @@ pipeline{
     }
 
     stages{
-        try {
-       
+        
         stage("Clone") {
             checkout scm
         }
@@ -28,15 +27,14 @@ pipeline{
         
         stage("Testing"){
             steps{
-                sh "npx cypress run --browser ${BROWSER}"
+                sh "npx cypress run --browser ${BROWSER} --env ambiente${AMBIENTE}"
             }
         }
-
-        
-    }
+    
     post{
         always{
             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'Report', reportTitles: 'PagSeguro - FAQ - e2e'])
         }
     }
+}
 }
