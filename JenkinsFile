@@ -14,11 +14,7 @@ pipeline{
 
     stages{
         
-        stage("Clone") {
-            checkout scm
-        }
-
-        stage("Build"){
+         stage("Build"){
             steps{
                 sh 'npm install'
             }
